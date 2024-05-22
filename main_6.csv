@@ -1,0 +1,168 @@
+name,region,gender,resource,ranged,year,adaptive,class
+Aatrox,Runeterra,male,Manaless,melee,2013,physical,Juggernaut
+Ahri,Ionia,female,Mana,ranged,2011,magic,Burst
+Akali,Ionia,female,Energy,melee,2010,physical,Assassin
+Akshan,Shurima,male,Mana,ranged,2021,physical,Marksman
+Alistar,Runeterra,male,Mana,melee,2009,magic,Vanguard
+Amumu,Shurima,male,Mana,melee,2009,magic,Vanguard
+Anivia,Freljord,female,Mana,ranged,2009,magic,Battlemage
+Annie,Runeterra,female,Mana,ranged,2009,magic,Burst
+Aphelios,Targon,male,Mana,ranged,2019,physical,Marksman
+Ashe,Freljord,female,Mana,ranged,2009,physical,Marksman
+Aurelion Sol,Runeterra,male,Mana,ranged,2016,magic,Battlemage
+Azir,Shurima,male,Mana,ranged,2014,magic,Specialist
+Bard,Runeterra,male,Mana,ranged,2015,magic,Catcher
+Bel'Veth,The Void,female,Manaless,melee,2022,physical,Skirmisher
+Blitzcrank,Zaun,male,Mana,melee,2009,physical,Catcher
+Brand,Runeterra,male,Mana,ranged,2011,magic,Burst
+Braum,Freljord,male,Mana,melee,2014,physical,Warden
+Briar,Noxus,female,Health,melee,2023,physical,Diver
+Caitlyn,Piltover,female,Mana,ranged,2011,physical,Marksman
+Camille,Piltover,female,Mana,melee,2016,physical,Diver
+Cassiopeia,Noxus,female,Mana,ranged,2010,magic,Battlemage
+Cho'Gath,The Void,male,Mana,melee,2009,magic,Specialist
+Corki,Bandle City,male,Mana,ranged,2009,physical,Marksman
+Darius,Noxus,male,Mana,melee,2012,physical,Juggernaut
+Diana,Targon,female,Mana,melee,2012,magic,Assassin
+Dr Mundo,Zaun,male,Health,melee,2009,physical,Juggernaut
+Draven,Noxus,male,Mana,ranged,2012,physical,Marksman
+Ekko,Zaun,male,Mana,melee,2015,magic,Assassin
+Elise,Shadow Isles,female,Mana,mixed,2012,magic,Diver
+Evelynn,Runeterra,female,Mana,melee,2009,magic,Assassin
+Ezreal,Piltover,male,Mana,ranged,2010,physical,Marksman
+Fiddlesticks,Runeterra,male,Mana,ranged,2009,magic,Specialist
+Fiora,Demacia,female,Mana,melee,2012,physical,Skirmisher
+Fizz,Runeterra,male,Mana,melee,2011,magic,Assassin
+Galio,Demacia,male,Mana,melee,2010,magic,Warden
+Gangplank,Bilgewater,male,Mana,melee,2009,physical,Specialist
+Garen,Demacia,male,Manaless,melee,2010,physical,Juggernaut
+Gnar,Freljord,male,Fury,mixed,2014,physical,Specialist
+Gragas,Freljord,male,Mana,melee,2010,magic,Vanguard
+Graves,Bilgewater,male,Mana,ranged,2011,physical,Specialist
+Gwen,Shadow Isles,female,Mana,melee,2021,magic,Skirmisher
+Hecarim,Shadow Isles,male,Mana,melee,2012,physical,Diver
+Heimerdinger,Piltover,male,Mana,ranged,2009,magic,Specialist
+Hwei,Ionia,male,Mana,ranged,2023,magic,Artillery
+Illaoi,Bilgewater,female,Mana,melee,2015,physical,Juggernaut
+Irelia,Ionia,female,Mana,melee,2010,physical,Diver
+Ivern,Ionia,male,Mana,ranged,2016,magic,Catcher
+Janna,Zaun,female,Mana,ranged,2009,magic,Enchanter
+Jarvan IV,Demacia,male,Mana,melee,2011,magic,Diver
+Jax,Runeterra,male,Mana,melee,2009,physical,Skirmisher
+Jayce,Piltover,male,Mana,mixed,2012,physical,Artillery
+Jhin,Ionia,male,Mana,ranged,2016,physical,Marksman
+Jinx,Zaun,female,Mana,ranged,2013,physical,Marksman
+Kai'Sa,The Void,female,Mana,ranged,2018,magic,Marksman
+Kalista,Shadow Isles,female,Mana,ranged,2014,physical,Marksman
+Karma,Ionia,female,Mana,ranged,2011,magic,Enchanter
+Karthus,Shadow Isles,male,Mana,ranged,2009,magic,Battlemage
+Kassadin,The Void,male,Mana,melee,2009,magic,Assassin
+Katarina,Noxus,female,Manaless,melee,2009,magic,Assassin
+Kayle,Demacia,female,Mana,mixed,2009,magic,Specialist
+Kayn,Ionia,male,Mana,melee,2017,physical,Skirmisher
+Kennen,Ionia,male,Energy,ranged,2010,magic,Specialist
+Kha'Zix,The Void,male,Mana,melee,2012,physical,Assassin
+Kindred,Runeterra,female,Mana,ranged,2015,physical,Marksman
+Kled,Noxus,male,Courage,melee,2016,physical,Skirmisher
+Kog'Maw,The Void,male,Mana,ranged,2010,physical,Marksman
+K'Sante,Shurima,male,Mana,melee,2022,physical,Warden
+LeBlanc,Noxus,female,Mana,ranged,2010,magic,Burst
+Lee Sin,Ionia,male,Energy,melee,2011,physical,Diver
+Leona,Targon,female,Mana,melee,2011,physical,Vanguard
+Lillia,Ionia,female,Mana,melee,2020,magic,Skirmisher
+Lissandra,Freljord,female,Mana,ranged,2013,magic,Burst
+Lucian,Runeterra,male,Mana,ranged,2013,physical,Marksman
+Lulu,Bandle City,female,Mana,ranged,2012,magic,Enchanter
+Lux,Demacia,female,Mana,ranged,2010,magic,Artillery
+Malphite,Ixtal,male,Mana,melee,2009,magic,Vanguard
+Malzahar,The Void,male,Mana,ranged,2010,magic,Battlemage
+Maokai,Shadow Isles,male,Mana,melee,2011,magic,Vanguard
+Master Yi,Ionia,male,Mana,melee,2009,magic,Skirmisher
+Milio,Ixtal,male,Mana,ranged,2023,magic,Enchanter
+Miss Fortune,Bilgewater,female,Mana,ranged,2010,physical,Marksman
+Mordekaiser,Noxus,male,Shield,melee,2010,magic,Juggernaut
+Morgana,Demacia,female,Mana,ranged,2009,magic,Catcher
+Naafiri,Shurima,female,Mana,melee,2023,physical,Assassin
+Nami,Runeterra,female,Mana,ranged,2012,magic,Enchanter
+Nasus,Shurima,male,Mana,melee,2009,physical,Juggernaut
+Nautilus,Bilgewater,male,Mana,melee,2012,magic,Vanguard
+Neeko,Ixtal,female,Mana,ranged,2018,magic,Burst
+Nidalee,Ixtal,female,Mana,mixed,2009,magic,Specialist
+Nilah,Bilgewater,female,Mana,melee,2022,physical,Skirmisher
+Nocturne,Runeterra,male,Mana,melee,2011,physical,Assassin
+Nunu i Willump,Freljord,male,Mana,melee,2009,magic,Vanguard
+Olaf,Freljord,male,Mana,melee,2010,physical,Diver
+Orianna,Piltover,female,Mana,ranged,2011,magic,Burst
+Ornn,Freljord,male,Mana,melee,2017,physical,Vanguard
+Pantheon,Targon,male,Mana,melee,2010,physical,Diver
+Poppy,Demacia,female,Mana,melee,2010,physical,Warden
+Pyke,Bilgewater,male,Mana,melee,2018,physical,Assassin
+Qiyana,Ixtal,female,Mana,melee,2019,physical,Assassin
+Quinn,Demacia,female,Mana,ranged,2013,physical,Specialist
+Rakan,Ionia,male,Mana,melee,2017,magic,Catcher
+Rammus,Shurima,male,Mana,melee,2009,physical,Vanguard
+Rek'Sai,The Void,female,Fury,melee,2014,physical,Diver
+Rell,Noxus,female,Mana,melee,2020,magic,Vanguard
+Renata Glasc,Zaun,female,Mana,ranged,2022,magic,Enchanter
+Renekton,Shurima,male,Fury,melee,2011,physical,Diver
+Rengar,Ixtal,male,Ferocity,melee,2012,physical,Assassin
+Riven,Noxus,female,Manaless,melee,2011,physical,Skirmisher
+Rumble,Bandle City,male,Heat,melee,2011,magic,Battlemage
+Ryze,Runeterra,male,Mana,ranged,2009,magic,Battlemage
+Samira,Noxus,female,Mana,ranged,2020,physical,Marksman
+Sejuani,Freljord,female,Mana,melee,2012,physical,Vanguard
+Senna,Runeterra,female,Mana,ranged,2019,physical,Marksman
+Seraphine,Piltover,female,Mana,ranged,2020,magic,Enchanter
+Sett,Ionia,male,Grit,melee,2020,physical,Juggernaut
+Shaco,Runeterra,male,Mana,melee,2009,physical,Assassin
+Shen,Ionia,male,Energy,melee,2010,physical,Warden
+Shyvana,Demacia,female,Fury,melee,2011,magic,Juggernaut
+Singed,Zaun,male,Mana,melee,2009,magic,Specialist
+Sion,Noxus,male,Mana,melee,2009,physical,Vanguard
+Sivir,Shurima,female,Mana,ranged,2009,physical,Marksman
+Skarner,Ixtal,male,Mana,melee,2011,physical,Vanguard
+Smolder,Runeterra,male,Mana,ranged,2024,physical,Marksman
+Sona,Demacia,female,Mana,ranged,2010,magic,Enchanter
+Soraka,Targon,female,Mana,ranged,2009,magic,Enchanter
+Swain,Noxus,male,Mana,ranged,2010,magic,Battlemage
+Sylas,Demacia,male,Mana,melee,2019,magic,Skirmisher
+Syndra,Ionia,female,Mana,ranged,2012,magic,Burst
+Tahm Kench,Runeterra,male,Mana,melee,2015,physical,Warden
+Taliyah,Shurima,female,Mana,ranged,2016,magic,Battlemage
+Talon,Noxus,male,Mana,melee,2011,physical,Assassin
+Taric,Targon,male,Mana,melee,2009,magic,Warden
+Teemo,Bandle City,male,Mana,ranged,2009,physical,Specialist
+Thresh,Shadow Isles,male,Mana,ranged,2013,physical,Catcher
+Tristana,Bandle City,female,Mana,ranged,2009,physical,Marksman
+Trundle,Freljord,male,Mana,melee,2010,physical,Juggernaut
+Tryndamere,Freljord,male,Fury,melee,2009,physical,Skirmisher
+Twisted Fate,Bilgewater,male,Mana,ranged,2009,magic,Burst
+Twitch,Zaun,male,Mana,ranged,2009,physical,Marksman
+Udyr,Freljord,male,Mana,melee,2009,physical,Juggernaut
+Urgot,Zaun,male,Mana,ranged,2010,physical,Juggernaut
+Varus,Ionia,male,Mana,ranged,2012,physical,Marksman
+Vayne,Demacia,female,Mana,ranged,2011,physical,Marksman
+Veigar,Bandle City,male,Mana,ranged,2009,magic,Burst
+Vel'Koz,The Void,male,Mana,ranged,2014,magic,Artillery
+Vex,Shadow Isles,female,Mana,ranged,2021,magic,Burst
+Vi,Piltover,female,Mana,melee,2012,physical,Diver
+Viego,Shadow Isles,male,Manaless,melee,2021,physical,Skirmisher
+Viktor,Zaun,male,Mana,ranged,2011,magic,Battlemage
+Vladimir,Noxus,male,Fury,ranged,2010,magic,Battlemage
+Volibear,Freljord,male,Mana,melee,2011,physical,Juggernaut
+Warwick,Zaun,male,Mana,melee,2009,physical,Diver
+Wukong,Ionia,male,Mana,melee,2011,physical,Diver
+Xayah,Ionia,female,Mana,ranged,2017,physical,Marksman
+Xerath,Shurima,male,Mana,ranged,2011,magic,Artillery
+Xin Zhao,Demacia,male,Mana,melee,2010,physical,Diver
+Yasuo,Ionia,male,Flow,melee,2013,physical,Skirmisher
+Yone,Ionia,male,Manaless,melee,2020,physical,Skirmisher
+Yorick,Shadow Isles,male,Mana,melee,2011,physical,Juggernaut
+Yuumi,Bandle City,female,Mana,ranged,2019,magic,Enchanter
+Zac,Zaun,male,Health,melee,2013,magic,Vanguard
+Zed,Ionia,male,Energy,melee,2012,physical,Assassin
+Zeri,Zaun,female,Mana,ranged,2022,physical,Marksman
+Ziggs,Zaun,male,Mana,ranged,2012,magic,Artillery
+Zilean,Runeterra,male,Mana,ranged,2009,magic,Specialist
+Zoe,Targon,female,Mana,ranged,2017,magic,Burst
+Zyra,Ixtal,female,Mana,ranged,2012,magic,Catcher

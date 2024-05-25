@@ -186,8 +186,9 @@ class app(customtkinter.CTk):
     customtkinter.set_default_color_theme("green")
 
     df = pd.read_csv('main_6.csv')
-    model_path = "model_1.1_loldle"
+    model_path = "best_model.keras"
     model = tf.keras.models.load_model(model_path)
+    model.save("new_version.keras")
 
     def __init__(self):
         super().__init__()

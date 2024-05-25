@@ -171,7 +171,7 @@ dict_class_no = {
 
 
 
-df = pd.read_csv('csv\main_6.csv')
+df = pd.read_csv('main_6.csv')
 
 
 state_list = []
@@ -324,9 +324,11 @@ def stress_test(model_path,full_list):
     print("Best",min_res,min_arr)
     print("Model_name",model_path)
 
-model_path = "model_1.1_loldle"
+model_path = "best_model.keras"
 
 model = tf.keras.models.load_model(model_path)
-# model.summary()
-#stress_test(model_path,True)
+model.summary()
+stress_test(model_path,True)
+model.save("best_model.keras")
+model.save("best_model.h5")
 #guess_name("Jhin",1,True,model)

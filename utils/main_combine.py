@@ -183,7 +183,7 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 #model = tf.keras.models.load_model('model_2.0_loldle')
 
-df = pd.read_csv('csv\main_6.csv')
+df = pd.read_csv('main_6.csv')
 state_list = []
 results = []
 real_results = []
@@ -553,10 +553,14 @@ def mixed_data():
         
 
 def learn(path_to_save):
+    global state_list, results
+    print(type(state_list[0]))
     print("Wymiarowość tablicy 1:", len(state_list))
     print("Wymiarowość tablicy 2:", len(results))
-    model.fit(state_list,results,epochs=50,batch_size=32)
-    model.save(path_to_save)
+    state_list = np.array(state_list)
+    results = np.array(results)
+    model.fit(state_list,results,epochs=100,batch_size=128)
+    model.save('model_v4.keras')
 
 
 def zero_indexes(lista, ilosc_indeksow):
@@ -679,16 +683,17 @@ def multi_data_false():
         results.append(temp_result)
 
 
-#multi_data()
-#multi_data_false()
+# multi_data()
+# multi_data_false()
 #default_data()
-#mixed_data()
+# mixed_data()
 # for i in range(8,10):
 #     default_data_prob(i/10)
 # make_data_times(1,False)
 # make_data_times(1,True)
+# model.summary()
 default_data()
-learn('model_3.0_loldle')
+learn('model_4_loldle.keras')
 # while True:
 #     make_data_times(1,False)
 #     mixed_data()

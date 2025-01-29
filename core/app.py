@@ -209,49 +209,6 @@ class app(customtkinter.CTk):
         self.restart_button = customtkinter.CTkButton(self, text="Restart",command=self.restart)
         self.restart_button.grid(row=0,column=2,padx=20, pady=20, sticky="e")
 
-
-        #frame for answers
-        # self.main_frame = customtkinter.CTkScrollableFrame(self)
-        # self.main_frame.grid(row=2,column=0,padx=10,pady=10,columnspan=6,sticky="nsew")
-        # self.grid_columnconfigure(0, weight=1)
-        # self.grid_rowconfigure(2, weight=1)
-
-        # self.player_frame = customtkinter.CTkFrame(self.main_frame, fg_color="#7CC46A")
-        # self.player_frame.grid(row=2,column=0,padx=10,pady=10,columnspan=6,sticky="nsew")
-        # self.grid_columnconfigure(0, weight=1)
-        # self.grid_rowconfigure(2, weight=1)
-
-        # self.ai_frame = customtkinter.CTkFrame(self.main_frame)
-        # self.ai_frame.grid(row=2,column=10,padx=10,pady=10,columnspan=6,sticky="nsew")
-        # self.grid_columnconfigure(0, weight=1)
-        # self.grid_rowconfigure(2, weight=1)
-
-        # self.user_label = customtkinter.CTkLabel(self.player_frame, text="Twoje odpowiedzi", font=("Arial", 14, "bold"))
-        # self.user_label.grid(row=0, column=0, columnspan=len(self.df.columns), pady=(10, 5))
-
-        # self.ai_label = customtkinter.CTkLabel(self.ai_frame, text="Odpowiedzi AI", font=("Arial", 14, "bold"))
-        # self.ai_label.grid(row=0, column=5, columnspan=len(self.df.columns), pady=(10, 5))
-
-
-        # self.bind("<Return>",lambda event: self.check_champ_button(event))
-        # self.bind("<Tab>",lambda event: self.autoComplete(event))
-        # counter=0
-        # for kol in self.df.columns:
-        #     self.temp = customtkinter.CTkLabel(self.player_frame)
-        #     self.temp.configure(text=kol)
-        #     self.temp.grid(row=1,column=counter,padx=(30,20), pady=20)
-        #     counter+=1
-        #     self.labels_types.append(self.temp)
-
-        # for kol in self.df.columns:
-        #     self.temp = customtkinter.CTkLabel(self.ai_frame)
-        #     self.temp.configure(text=kol)
-        #     if kol == "name":
-        #         self.temp.grid(row=1,column=counter,padx=(30,20), pady=20)
-        #     else:
-        #         self.temp.grid(row=1,column=counter,padx=20, pady=20)
-        #     counter+=1
-        #     self.labels_types.append(self.temp)
         self.createView()
 
         print(self.name)
@@ -319,26 +276,8 @@ class app(customtkinter.CTk):
         self.checked_indices = []
 
         self.main_frame.destroy()
-        self.main_frame = customtkinter.CTkScrollableFrame(self)
-        self.main_frame.grid(row=2,column=0,padx=10,pady=10,columnspan=6,sticky="nsew")
-        self.name = self.df.sample().iloc[0]['name']
-        counter=0
-        for kol in self.df.columns:
-            self.temp = customtkinter.CTkLabel(self.player_frame)
-            self.temp.configure(text=kol)
-            self.temp.grid(row=0,column=counter,padx=20, pady=20)
-            counter+=1
-            self.labels_types.append(self.temp)
 
-        for kol in self.df.columns:
-            self.temp = customtkinter.CTkLabel(self.ai_frame)
-            self.temp.configure(text=kol)
-            if kol == "name":
-                self.temp.grid(row=0,column=counter,padx=(30,20), pady=20)
-            else:
-                self.temp.grid(row=0,column=counter,padx=20, pady=20)
-            counter+=1
-            self.labels_types.append(self.temp)
+        self.createView()
 
     def check_champ_button(self,event):
         self.current_label_row+=1
@@ -381,44 +320,45 @@ class app(customtkinter.CTk):
         self.input.delete(0,customtkinter.END)
 
     def check_champ(self):
-        self.current_label_row+=1
-        print("a")
-        if not self.input.get() in self.df['name'].values:
-            print("brak w bazie")
-            return
-        if self.name == self.input.get():
-            print("Gratulacje! Udało Ci się odgadnąć imię.")
-            rec=self.df[self.df['name'] == self.input.get()].iloc[0]
-            com = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],self.df[self.df['name'] == self.input.get()].iloc[0],False)
-            if self.df[self.df['name'] == self.name].iloc[0]['year'] > self.df[self.df['name'] == self.input.get()].iloc[0]['year']:
-                is_new = True
-            else:
-                is_new = False
-            new_guess = guess(rec,self.current_label_row,self.main_frame,com,0,is_new)
-            self.guess_list.append(new_guess)
-        else:
-            print("Nie udało się odgadnąć")
-            # self.new_frame = customtkinter.CTkFrame(self.main_frame)
-            # self.label = customtkinter.CTkLabel(self.main_frame)
-            com = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],self.df[self.df['name'] == self.input.get()].iloc[0],False)
-            print(com)
-            # self.label._text=com
-            if self.df[self.df['name'] == self.name].iloc[0]['year'] > self.df[self.df['name'] == self.input.get()].iloc[0]['year']:
-                is_new = True
-            else:
-                is_new = False
-            rec=self.df[self.df['name'] == self.input.get()].iloc[0]
-            new_guess = guess(rec,self.current_label_row,self.main_frame,com,0,is_new)
-            self.guess_list.append(new_guess)
-        temp_rec=self.guess_name(self.model,self.df[self.df['name'] == self.name].iloc[0])
-        compare = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],temp_rec,False)
-        if self.df[self.df['name'] == self.name].iloc[0]['year'] > temp_rec['year']:
-            is_new = True
-        else:
-            is_new = False
-        new_guess = guess(temp_rec,self.current_label_row,self.main_frame,compare,8,is_new)
-        self.guess_list.append(new_guess)
-        self.input.delete(0,customtkinter.END)
+        self.check_champ_button(self)
+        # self.current_label_row+=1
+        # print("a")
+        # if not self.input.get() in self.df['name'].values:
+        #     print("brak w bazie")
+        #     return
+        # if self.name == self.input.get():
+        #     print("Gratulacje! Udało Ci się odgadnąć imię.")
+        #     rec=self.df[self.df['name'] == self.input.get()].iloc[0]
+        #     com = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],self.df[self.df['name'] == self.input.get()].iloc[0],False)
+        #     if self.df[self.df['name'] == self.name].iloc[0]['year'] > self.df[self.df['name'] == self.input.get()].iloc[0]['year']:
+        #         is_new = True
+        #     else:
+        #         is_new = False
+        #     new_guess = guess(rec,self.current_label_row,self.player_frame,com,0,is_new)
+        #     self.guess_list.append(new_guess)
+        # else:
+        #     print("Nie udało się odgadnąć")
+        #     # self.new_frame = customtkinter.CTkFrame(self.main_frame)
+        #     # self.label = customtkinter.CTkLabel(self.main_frame)
+        #     com = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],self.df[self.df['name'] == self.input.get()].iloc[0],False)
+        #     print(com)
+        #     # self.label._text=com
+        #     if self.df[self.df['name'] == self.name].iloc[0]['year'] > self.df[self.df['name'] == self.input.get()].iloc[0]['year']:
+        #         is_new = True
+        #     else:
+        #         is_new = False
+        #     rec=self.df[self.df['name'] == self.input.get()].iloc[0]
+        #     new_guess = guess(rec,self.current_label_row,self.player_frame,com,0,is_new)
+        #     self.guess_list.append(new_guess)
+        # temp_rec=self.guess_name(self.model,self.df[self.df['name'] == self.name].iloc[0])
+        # compare = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],temp_rec,False)
+        # if self.df[self.df['name'] == self.name].iloc[0]['year'] > temp_rec['year']:
+        #     is_new = True
+        # else:
+        #     is_new = False
+        # new_guess = guess(temp_rec,self.current_label_row,self.ai_frame,compare,8,is_new)
+        # self.guess_list.append(new_guess)
+        # self.input.delete(0,customtkinter.END)
 
     def porownaj_rekordy(self,rekord1, rekord2,ai):
         wspolne_pola = []

@@ -4,6 +4,7 @@ import pandas as pd
 import random
 import time
 import numpy as np
+from difflib import get_close_matches
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("green")
@@ -223,6 +224,7 @@ class app(customtkinter.CTk):
 
 
         self.bind("<Return>",lambda event: self.check_champ_button(event))
+        self.bind("<Tab>",lambda event: self.autoComplete(event))
         counter=0
         for kol in self.df.columns:
             self.temp = customtkinter.CTkLabel(self.main_frame)
@@ -245,6 +247,16 @@ class app(customtkinter.CTk):
         self.guess_list = []
         self.state_for_ai = [0]*122
         self.checked_indices = []
+
+    def autoComplete(self, event):
+        user_input = self.input.get()
+
+        if user_input:
+            matches = get_close_matches(user_input, self.df["name"].tolist(), n=1, cutoff=0.6)
+            if matches:
+                self.input.delete(0, "end")
+                self.input.insert(0, matches[0])
+
 
     def restart(self):
         self.current_label_row=3

@@ -211,15 +211,75 @@ class app(customtkinter.CTk):
 
 
         #frame for answers
+        # self.main_frame = customtkinter.CTkScrollableFrame(self)
+        # self.main_frame.grid(row=2,column=0,padx=10,pady=10,columnspan=6,sticky="nsew")
+        # self.grid_columnconfigure(0, weight=1)
+        # self.grid_rowconfigure(2, weight=1)
+
+        # self.player_frame = customtkinter.CTkFrame(self.main_frame, fg_color="#7CC46A")
+        # self.player_frame.grid(row=2,column=0,padx=10,pady=10,columnspan=6,sticky="nsew")
+        # self.grid_columnconfigure(0, weight=1)
+        # self.grid_rowconfigure(2, weight=1)
+
+        # self.ai_frame = customtkinter.CTkFrame(self.main_frame)
+        # self.ai_frame.grid(row=2,column=10,padx=10,pady=10,columnspan=6,sticky="nsew")
+        # self.grid_columnconfigure(0, weight=1)
+        # self.grid_rowconfigure(2, weight=1)
+
+        # self.user_label = customtkinter.CTkLabel(self.player_frame, text="Twoje odpowiedzi", font=("Arial", 14, "bold"))
+        # self.user_label.grid(row=0, column=0, columnspan=len(self.df.columns), pady=(10, 5))
+
+        # self.ai_label = customtkinter.CTkLabel(self.ai_frame, text="Odpowiedzi AI", font=("Arial", 14, "bold"))
+        # self.ai_label.grid(row=0, column=5, columnspan=len(self.df.columns), pady=(10, 5))
+
+
+        # self.bind("<Return>",lambda event: self.check_champ_button(event))
+        # self.bind("<Tab>",lambda event: self.autoComplete(event))
+        # counter=0
+        # for kol in self.df.columns:
+        #     self.temp = customtkinter.CTkLabel(self.player_frame)
+        #     self.temp.configure(text=kol)
+        #     self.temp.grid(row=1,column=counter,padx=(30,20), pady=20)
+        #     counter+=1
+        #     self.labels_types.append(self.temp)
+
+        # for kol in self.df.columns:
+        #     self.temp = customtkinter.CTkLabel(self.ai_frame)
+        #     self.temp.configure(text=kol)
+        #     if kol == "name":
+        #         self.temp.grid(row=1,column=counter,padx=(30,20), pady=20)
+        #     else:
+        #         self.temp.grid(row=1,column=counter,padx=20, pady=20)
+        #     counter+=1
+        #     self.labels_types.append(self.temp)
+        self.createView()
+
+        print(self.name)
+        self.guess_list = []
+        self.state_for_ai = [0]*122
+        self.checked_indices = []
+
+    def createView(self):
+        #frame for answers
         self.main_frame = customtkinter.CTkScrollableFrame(self)
         self.main_frame.grid(row=2,column=0,padx=10,pady=10,columnspan=6,sticky="nsew")
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(2, weight=1)
 
-        self.user_label = customtkinter.CTkLabel(self.main_frame, text="Twoje odpowiedzi", font=("Arial", 14, "bold"))
-        self.user_label.grid(row=0, column=0, columnspan=len(self.df.columns)//2, pady=(0, 5))
+        self.player_frame = customtkinter.CTkFrame(self.main_frame, fg_color="#7CC46A")
+        self.player_frame.grid(row=2,column=0,padx=10,pady=10,columnspan=6,sticky="nsew")
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(2, weight=1)
 
-        self.ai_label = customtkinter.CTkLabel(self.main_frame, text="Odpowiedzi AI", font=("Arial", 14, "bold"))
+        self.ai_frame = customtkinter.CTkFrame(self.main_frame)
+        self.ai_frame.grid(row=2,column=10,padx=10,pady=10,columnspan=6,sticky="nsew")
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(2, weight=1)
+
+        self.user_label = customtkinter.CTkLabel(self.player_frame, text="Twoje odpowiedzi", font=("Arial", 14, "bold"))
+        self.user_label.grid(row=0, column=0, columnspan=len(self.df.columns), pady=(10, 5))
+
+        self.ai_label = customtkinter.CTkLabel(self.ai_frame, text="Odpowiedzi AI", font=("Arial", 14, "bold"))
         self.ai_label.grid(row=0, column=5, columnspan=len(self.df.columns), pady=(10, 5))
 
 
@@ -227,14 +287,14 @@ class app(customtkinter.CTk):
         self.bind("<Tab>",lambda event: self.autoComplete(event))
         counter=0
         for kol in self.df.columns:
-            self.temp = customtkinter.CTkLabel(self.main_frame)
+            self.temp = customtkinter.CTkLabel(self.player_frame)
             self.temp.configure(text=kol)
-            self.temp.grid(row=1,column=counter,padx=20, pady=20)
+            self.temp.grid(row=1,column=counter,padx=(30,20), pady=20)
             counter+=1
             self.labels_types.append(self.temp)
 
         for kol in self.df.columns:
-            self.temp = customtkinter.CTkLabel(self.main_frame)
+            self.temp = customtkinter.CTkLabel(self.ai_frame)
             self.temp.configure(text=kol)
             if kol == "name":
                 self.temp.grid(row=1,column=counter,padx=(30,20), pady=20)
@@ -242,11 +302,6 @@ class app(customtkinter.CTk):
                 self.temp.grid(row=1,column=counter,padx=20, pady=20)
             counter+=1
             self.labels_types.append(self.temp)
-
-        print(self.name)
-        self.guess_list = []
-        self.state_for_ai = [0]*122
-        self.checked_indices = []
 
     def autoComplete(self, event):
         user_input = self.input.get()
@@ -269,14 +324,14 @@ class app(customtkinter.CTk):
         self.name = self.df.sample().iloc[0]['name']
         counter=0
         for kol in self.df.columns:
-            self.temp = customtkinter.CTkLabel(self.main_frame)
+            self.temp = customtkinter.CTkLabel(self.player_frame)
             self.temp.configure(text=kol)
             self.temp.grid(row=0,column=counter,padx=20, pady=20)
             counter+=1
             self.labels_types.append(self.temp)
 
         for kol in self.df.columns:
-            self.temp = customtkinter.CTkLabel(self.main_frame)
+            self.temp = customtkinter.CTkLabel(self.ai_frame)
             self.temp.configure(text=kol)
             if kol == "name":
                 self.temp.grid(row=0,column=counter,padx=(30,20), pady=20)
@@ -299,7 +354,7 @@ class app(customtkinter.CTk):
                 is_new = True
             else:
                 is_new = False
-            new_guess = guess(rec,self.current_label_row,self.main_frame,com,0,is_new)
+            new_guess = guess(rec,self.current_label_row,self.player_frame,com,0,is_new)
             self.guess_list.append(new_guess)
         else:
             print("Nie udało się odgadnąć")
@@ -313,7 +368,7 @@ class app(customtkinter.CTk):
             else:
                 is_new = False
             rec=self.df[self.df['name'] == self.input.get()].iloc[0]
-            new_guess = guess(rec,self.current_label_row,self.main_frame,com,0,is_new)
+            new_guess = guess(rec,self.current_label_row,self.player_frame,com,0,is_new)
             self.guess_list.append(new_guess)
         temp_rec=self.guess_name(self.model,self.df[self.df['name'] == self.name].iloc[0])
         compare = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],temp_rec,False)
@@ -321,7 +376,7 @@ class app(customtkinter.CTk):
             is_new = True
         else:
             is_new = False
-        new_guess = guess(temp_rec,self.current_label_row,self.main_frame,compare,8,is_new)
+        new_guess = guess(temp_rec,self.current_label_row,self.ai_frame,compare,8,is_new)
         self.guess_list.append(new_guess)
         self.input.delete(0,customtkinter.END)
 

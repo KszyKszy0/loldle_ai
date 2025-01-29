@@ -249,16 +249,16 @@ def guess_name(name,sleeptime):
                 model_values[0][np.argmax(model_values)]=0
             else:
                 checked_indices.append(np.argmax(model_values))
-                break        
+                break
         odgadniete_imie = df.iloc[np.argmax(model_values)]['name']
         false_predict = np.argmax(model_values)
 
         # Pobranie indeksów 10 największych prawdopodobieństw dla każdego przykładu
         top_k_indices = tf.math.top_k(model_values, k=10).indices.numpy()
-        
+
         # Pobranie wartości 10 największych prawdopodobieństw dla każdego przykładu
         top_k_values = tf.math.top_k(model_values, k=10).values.numpy()
-        
+
         # Wypisanie wyników
         for i in range(len(model_values)):
             print("Największe prawdopodobieństwa dla przykładu", ":")
@@ -267,7 +267,7 @@ def guess_name(name,sleeptime):
 
         time.sleep(sleeptime)
         print(odgadniete_imie)
-        
+
         if odgadniete_imie == losowy['name']:
             print("Gratulacje! Udało Ci się odgadnąć imię.")
             state_list.append(state)
@@ -314,7 +314,7 @@ def make_data_times(how_many,random):
                             model_values[0][np.argmax(model_values)]=0
                         else:
                             checked_indices.append(np.argmax(model_values))
-                            break        
+                            break
                     odgadniete_imie = df.iloc[np.argmax(model_values)]['name']
                     false_predict = np.argmax(model_values)
                     # print(odgadniete_imie)
@@ -367,7 +367,7 @@ def make_data_times_restricted(how_many,random,bound):
                             model_values[0][np.argmax(model_values)]=0
                         else:
                             checked_indices.append(np.argmax(model_values))
-                            break        
+                            break
                     odgadniete_imie = df.iloc[np.argmax(model_values)]['name']
                     false_predict = np.argmax(model_values)
                     # print(odgadniete_imie)
@@ -471,7 +471,7 @@ def make_data_times_only_familiar(how_many):
                 #             model_values[0][np.argmax(model_values)]=0
                 #         else:
                 #             checked_indices.append(np.argmax(model_values))
-                #             break        
+                #             break
                 #     odgadniete_imie = df.iloc[np.argmax(model_values)]['name']
                 #     false_predict = np.argmax(model_values)
                     # print(odgadniete_imie)
@@ -547,10 +547,10 @@ def mixed_data():
             for i in range(122):
                 combo_state[i]=one_state[i]+anti[i]
             ready_state=zero_indexes(combo_state,random.randint(25,35))
-            #print(ready_state)    
+            #print(ready_state)
             state_list.append(ready_state)
             results.append(result)
-        
+
 
 def learn(path_to_save):
     global state_list, results
@@ -569,7 +569,7 @@ def zero_indexes(lista, ilosc_indeksow):
     for indeks in indeksy_do_zmiany:
         lista[indeks] = 0
     return lista
-    
+
 def multi_data():
     for key in dict_regions:
         indxs = df.loc[df['region'] == key].index
@@ -693,7 +693,7 @@ def multi_data_false():
 # make_data_times(1,True)
 # model.summary()
 default_data()
-learn('model_4_loldle.keras')
+learn('model_4_loldle.h5')
 # while True:
 #     make_data_times(1,False)
 #     mixed_data()

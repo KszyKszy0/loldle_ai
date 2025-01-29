@@ -3,7 +3,7 @@ import tensorflow as tf
 import pandas as pd
 import random
 import time
-import numpy as np 
+import numpy as np
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("green")
@@ -181,24 +181,24 @@ class app(customtkinter.CTk):
         'Warden': 120,
         'Specialist': 121
     }
-    
+
     customtkinter.set_appearance_mode("dark")
     customtkinter.set_default_color_theme("green")
 
     df = pd.read_csv('main_6.csv')
-    model_path = "best_model.keras"
+    model_path = "model_v4.keras"
     model = tf.keras.models.load_model(model_path)
-    model.save("new_version.keras")
+    model.save("model_v4.keras")
 
     def __init__(self):
         super().__init__()
         self.geometry("850x500")
-        
+
 
         self.name = self.df.sample().iloc[0]['name']
         self.labels_types = []
-        
-        
+
+
         #input and button
         self.input = customtkinter.CTkEntry(self, placeholder_text="champ")
         self.input.grid(column=0,row=0,padx=20, pady=20,sticky="w")
@@ -243,7 +243,7 @@ class app(customtkinter.CTk):
         self.current_label_row=3
         self.state_for_ai = [0]*122
         self.checked_indices = []
-        
+
         self.main_frame.destroy()
         self.main_frame = customtkinter.CTkScrollableFrame(self)
         self.main_frame.grid(row=2,column=0,padx=10,pady=10,columnspan=6,sticky="nsew")
@@ -265,7 +265,7 @@ class app(customtkinter.CTk):
                 self.temp.grid(row=0,column=counter,padx=20, pady=20)
             counter+=1
             self.labels_types.append(self.temp)
-        
+
     def check_champ_button(self,event):
         self.current_label_row+=1
         print("a")
@@ -278,7 +278,7 @@ class app(customtkinter.CTk):
             com = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],self.df[self.df['name'] == self.input.get()].iloc[0],False)
             if self.df[self.df['name'] == self.name].iloc[0]['year'] > self.df[self.df['name'] == self.input.get()].iloc[0]['year']:
                 is_new = True
-            else: 
+            else:
                 is_new = False
             new_guess = guess(rec,self.current_label_row,self.main_frame,com,0,is_new)
             self.guess_list.append(new_guess)
@@ -291,7 +291,7 @@ class app(customtkinter.CTk):
             # self.label._text=com
             if self.df[self.df['name'] == self.name].iloc[0]['year'] > self.df[self.df['name'] == self.input.get()].iloc[0]['year']:
                 is_new = True
-            else: 
+            else:
                 is_new = False
             rec=self.df[self.df['name'] == self.input.get()].iloc[0]
             new_guess = guess(rec,self.current_label_row,self.main_frame,com,0,is_new)
@@ -300,7 +300,7 @@ class app(customtkinter.CTk):
         compare = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],temp_rec,False)
         if self.df[self.df['name'] == self.name].iloc[0]['year'] > temp_rec['year']:
             is_new = True
-        else: 
+        else:
             is_new = False
         new_guess = guess(temp_rec,self.current_label_row,self.main_frame,compare,8,is_new)
         self.guess_list.append(new_guess)
@@ -318,7 +318,7 @@ class app(customtkinter.CTk):
             com = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],self.df[self.df['name'] == self.input.get()].iloc[0],False)
             if self.df[self.df['name'] == self.name].iloc[0]['year'] > self.df[self.df['name'] == self.input.get()].iloc[0]['year']:
                 is_new = True
-            else: 
+            else:
                 is_new = False
             new_guess = guess(rec,self.current_label_row,self.main_frame,com,0,is_new)
             self.guess_list.append(new_guess)
@@ -331,7 +331,7 @@ class app(customtkinter.CTk):
             # self.label._text=com
             if self.df[self.df['name'] == self.name].iloc[0]['year'] > self.df[self.df['name'] == self.input.get()].iloc[0]['year']:
                 is_new = True
-            else: 
+            else:
                 is_new = False
             rec=self.df[self.df['name'] == self.input.get()].iloc[0]
             new_guess = guess(rec,self.current_label_row,self.main_frame,com,0,is_new)
@@ -340,7 +340,7 @@ class app(customtkinter.CTk):
         compare = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],temp_rec,False)
         if self.df[self.df['name'] == self.name].iloc[0]['year'] > temp_rec['year']:
             is_new = True
-        else: 
+        else:
             is_new = False
         new_guess = guess(temp_rec,self.current_label_row,self.main_frame,compare,8,is_new)
         self.guess_list.append(new_guess)
@@ -383,15 +383,15 @@ class app(customtkinter.CTk):
                     if kolumna == 'class':
                         self.state_for_ai[self.dict_class_no[rekord1['class']]] = 1
         return wspolne_pola
-        
-    def guess_name(self,model,target):       
+
+    def guess_name(self,model,target):
         model_values = model.predict(np.array(self.state_for_ai).reshape(1, -1),verbose=0)
         while True:
             if np.argmax(model_values) in self.checked_indices:
                 model_values[0][np.argmax(model_values)]=0
             else:
                 self.checked_indices.append(np.argmax(model_values))
-                break        
+                break
         odgadniete_imie = self.df.iloc[np.argmax(model_values)]['name']
         if odgadniete_imie == target['name']:
             print("Gratulacje! Udało Ci się odgadnąć imię.")
@@ -400,7 +400,7 @@ class app(customtkinter.CTk):
         print(self.state_for_ai)
         return self.df.iloc[np.argmax(model_values)]
 
-        
+
 main = app()
 main.mainloop()
 

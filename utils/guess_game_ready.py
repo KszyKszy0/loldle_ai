@@ -2,7 +2,7 @@ import tensorflow as tf
 import pandas as pd
 import random
 import time
-import numpy as np 
+import numpy as np
 
 dict_regions = {
     'Bandle City': 0,
@@ -244,16 +244,16 @@ def guess_name(name,sleeptime,view_mode,model):
                 model_values[0][np.argmax(model_values)]=0
             else:
                 checked_indices.append(np.argmax(model_values))
-                break        
+                break
         odgadniete_imie = df.iloc[np.argmax(model_values)]['name']
         false_predict = np.argmax(model_values)
 
         # Pobranie indeksów 10 największych prawdopodobieństw dla każdego przykładu
         top_k_indices = tf.math.top_k(model_values, k=10).indices.numpy()
-        
+
         # Pobranie wartości 10 największych prawdopodobieństw dla każdego przykładu
         top_k_values = tf.math.top_k(model_values, k=10).values.numpy()
-        
+
         # Wypisanie wyników
         if view_mode:
             for i in range(len(model_values)):
@@ -324,11 +324,11 @@ def stress_test(model_path,full_list):
     print("Best",min_res,min_arr)
     print("Model_name",model_path)
 
-model_path = "best_model.keras"
+model_path = "mixed_model_0_1.h5"
 
 model = tf.keras.models.load_model(model_path)
 model.summary()
 stress_test(model_path,True)
-model.save("best_model.keras")
-model.save("best_model.h5")
+# model.save("best_model.keras")
+# model.save("best_model.h5")
 #guess_name("Jhin",1,True,model)

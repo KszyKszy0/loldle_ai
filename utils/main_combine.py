@@ -3,10 +3,6 @@ import pandas as pd
 import random
 import time
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix
-import seaborn as sns
-from sklearn import metrics
 
 dict_regions = {
     'Bandle City': 0,
@@ -543,10 +539,10 @@ def mixed_data():
         result = 167 * [0]
         result[index] = 1
         combo_state = 122*[0]
-        for i in range(10):
+        for j in range(10):
             for i in range(122):
                 combo_state[i]=one_state[i]+anti[i]
-            ready_state=zero_indexes(combo_state,random.randint(25,35))
+            ready_state=zero_indexes(combo_state,random.randint(0,1))
             #print(ready_state)
             state_list.append(ready_state)
             results.append(result)
@@ -560,7 +556,7 @@ def learn(path_to_save):
     state_list = np.array(state_list)
     results = np.array(results)
     model.fit(state_list,results,epochs=100,batch_size=128)
-    model.save('model_v4.keras')
+    model.save(path_to_save)
 
 
 def zero_indexes(lista, ilosc_indeksow):
@@ -686,14 +682,14 @@ def multi_data_false():
 # multi_data()
 # multi_data_false()
 #default_data()
-# mixed_data()
+mixed_data()
 # for i in range(8,10):
 #     default_data_prob(i/10)
 # make_data_times(1,False)
 # make_data_times(1,True)
 # model.summary()
-default_data()
-learn('model_4_loldle.h5')
+# default_data()
+learn('mixed_model_0_1.h5')
 # while True:
 #     make_data_times(1,False)
 #     mixed_data()

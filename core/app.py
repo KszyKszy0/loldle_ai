@@ -186,9 +186,9 @@ class app(customtkinter.CTk):
     customtkinter.set_default_color_theme("green")
 
     df = pd.read_csv('main_6.csv')
-    model_path = "model_v4.keras"
+    model_path = "mixed_model_0_1.h5"
     model = tf.keras.models.load_model(model_path)
-    model.save("model_v4.keras")
+    # model.save("model_v4.keras")
 
     def __init__(self):
         super().__init__()
@@ -215,12 +215,19 @@ class app(customtkinter.CTk):
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(2, weight=1)
 
+        self.user_label = customtkinter.CTkLabel(self.main_frame, text="Twoje odpowiedzi", font=("Arial", 14, "bold"))
+        self.user_label.grid(row=0, column=0, columnspan=len(self.df.columns)//2, pady=(0, 5))
+
+        self.ai_label = customtkinter.CTkLabel(self.main_frame, text="Odpowiedzi AI", font=("Arial", 14, "bold"))
+        self.ai_label.grid(row=0, column=5, columnspan=len(self.df.columns), pady=(10, 5))
+
+
         self.bind("<Return>",lambda event: self.check_champ_button(event))
         counter=0
         for kol in self.df.columns:
             self.temp = customtkinter.CTkLabel(self.main_frame)
             self.temp.configure(text=kol)
-            self.temp.grid(row=0,column=counter,padx=20, pady=20)
+            self.temp.grid(row=1,column=counter,padx=20, pady=20)
             counter+=1
             self.labels_types.append(self.temp)
 
@@ -228,9 +235,9 @@ class app(customtkinter.CTk):
             self.temp = customtkinter.CTkLabel(self.main_frame)
             self.temp.configure(text=kol)
             if kol == "name":
-                self.temp.grid(row=0,column=counter,padx=(30,20), pady=20)
+                self.temp.grid(row=1,column=counter,padx=(30,20), pady=20)
             else:
-                self.temp.grid(row=0,column=counter,padx=20, pady=20)
+                self.temp.grid(row=1,column=counter,padx=20, pady=20)
             counter+=1
             self.labels_types.append(self.temp)
 

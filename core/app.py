@@ -279,6 +279,9 @@ class app(customtkinter.CTk):
 
         self.createView()
 
+        self.name = self.df.sample().iloc[0]['name']
+        print(self.name)
+
     def check_champ_button(self,event):
         self.current_label_row+=1
         print("a")
@@ -297,11 +300,8 @@ class app(customtkinter.CTk):
             self.guess_list.append(new_guess)
         else:
             print("Nie udało się odgadnąć")
-            # self.new_frame = customtkinter.CTkFrame(self.main_frame)
-            # self.label = customtkinter.CTkLabel(self.main_frame)
             com = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],self.df[self.df['name'] == self.input.get()].iloc[0],False)
             print(com)
-            # self.label._text=com
             if self.df[self.df['name'] == self.name].iloc[0]['year'] > self.df[self.df['name'] == self.input.get()].iloc[0]['year']:
                 is_new = True
             else:
@@ -321,44 +321,6 @@ class app(customtkinter.CTk):
 
     def check_champ(self):
         self.check_champ_button(self)
-        # self.current_label_row+=1
-        # print("a")
-        # if not self.input.get() in self.df['name'].values:
-        #     print("brak w bazie")
-        #     return
-        # if self.name == self.input.get():
-        #     print("Gratulacje! Udało Ci się odgadnąć imię.")
-        #     rec=self.df[self.df['name'] == self.input.get()].iloc[0]
-        #     com = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],self.df[self.df['name'] == self.input.get()].iloc[0],False)
-        #     if self.df[self.df['name'] == self.name].iloc[0]['year'] > self.df[self.df['name'] == self.input.get()].iloc[0]['year']:
-        #         is_new = True
-        #     else:
-        #         is_new = False
-        #     new_guess = guess(rec,self.current_label_row,self.player_frame,com,0,is_new)
-        #     self.guess_list.append(new_guess)
-        # else:
-        #     print("Nie udało się odgadnąć")
-        #     # self.new_frame = customtkinter.CTkFrame(self.main_frame)
-        #     # self.label = customtkinter.CTkLabel(self.main_frame)
-        #     com = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],self.df[self.df['name'] == self.input.get()].iloc[0],False)
-        #     print(com)
-        #     # self.label._text=com
-        #     if self.df[self.df['name'] == self.name].iloc[0]['year'] > self.df[self.df['name'] == self.input.get()].iloc[0]['year']:
-        #         is_new = True
-        #     else:
-        #         is_new = False
-        #     rec=self.df[self.df['name'] == self.input.get()].iloc[0]
-        #     new_guess = guess(rec,self.current_label_row,self.player_frame,com,0,is_new)
-        #     self.guess_list.append(new_guess)
-        # temp_rec=self.guess_name(self.model,self.df[self.df['name'] == self.name].iloc[0])
-        # compare = self.porownaj_rekordy(self.df[self.df['name'] == self.name].iloc[0],temp_rec,False)
-        # if self.df[self.df['name'] == self.name].iloc[0]['year'] > temp_rec['year']:
-        #     is_new = True
-        # else:
-        #     is_new = False
-        # new_guess = guess(temp_rec,self.current_label_row,self.ai_frame,compare,8,is_new)
-        # self.guess_list.append(new_guess)
-        # self.input.delete(0,customtkinter.END)
 
     def porownaj_rekordy(self,rekord1, rekord2,ai):
         wspolne_pola = []
